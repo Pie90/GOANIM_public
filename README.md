@@ -11,3 +11,7 @@ Due to the nature of the input files (raster maps) the model requires an importa
 The model also requires the COIN-OR CLP solver to be installed in order to be able to solve the linear optimisation problems (https://projects.coin-or.org/Clp)
 
 List of R packages needed to run the model: raster, clpAPI, ROI.plugin.clp, ROI, slam, doParallel, foreach, unixtools, pryr
+
+# Model Versions
+
+GOANIM is provided in two version: version #1 is based on the optimisation of N flows, crop yields and livestock populations; version #2 is based only on the optimisation of N flows and crop yields for cropland production. Livestock manure data as to be inputed to the model. Check out the model documentation for further details.
