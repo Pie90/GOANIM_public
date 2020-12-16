@@ -354,15 +354,15 @@ counter <- array(dim=c(1,9331200))                                        # coun
 
 i=1
 
-                      #j=3656019  Location: Haiti           1869401      2893545    2335105   #186624
+                      
 
 		
-## sensitivity initalisation, script initialisation.		
-sensitivity_no <- 25
-script_no <- 1
+## scenario initalisation, script initialisation.		
+scenario_S_no <- NA
+script_no <- NA
 
 
-for (j in 1:1060363) {    
+for (j in 1:9331200) {    
 
 if (is.na(matrix_area_vec[i,j,1])==FALSE) {   # Run optimisation only if there is some  land in the gridcell (excuding oceans)
 
@@ -977,7 +977,7 @@ crs <- c("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
 # Total crops yield
 for (i in 1:61) {
 	raster_1 <- raster(matrix(matrix_final_yield[,,i], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-	writeRaster(raster_1, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no, "/scenario_S_", sensitivity_no , "/script_", script_no, "_yield_1_", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
+	writeRaster(raster_1, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no, "/scenario_S_", scenario_S_no , "/script_", script_no, "_yield_1_", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
 }
 
 rm(raster_1, matrix_final_yield)
@@ -987,7 +987,7 @@ gc()
 # Total N from organic manure allocate to each crop
 for (i in 1:61) {
     raster_2 <- raster(matrix(matrix_final_N_assigned_to_crop[,,i], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-    writeRaster(raster_2, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no, "/scenario_S_", sensitivity_no,  "/script_", script_no, "_N_MANURE_assigned_to_crop_1_", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
+    writeRaster(raster_2, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no, "/scenario_S_", scenario_S_no,  "/script_", script_no, "_N_MANURE_assigned_to_crop_1_", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
 }
 
 rm(raster_2, matrix_final_N_assigned_to_crop)
@@ -995,23 +995,23 @@ gc()
 
 # Animal number of heads 
 raster_3 <- raster(matrix(number_of_livestock_heads[,,1], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_3, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_cows"), format="GTiff", overwrite=T)
+writeRaster(raster_3, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_cows"), format="GTiff", overwrite=T)
 raster_4 <- raster(matrix(number_of_livestock_heads[,,2], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_4, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_beef"), format="GTiff", overwrite=T)
+writeRaster(raster_4, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_beef"), format="GTiff", overwrite=T)
 raster_5 <- raster(matrix(number_of_livestock_heads[,,3], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_5, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_dairy_goats"), format="GTiff", overwrite=T)
+writeRaster(raster_5, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_dairy_goats"), format="GTiff", overwrite=T)
 raster_6 <- raster(matrix(number_of_livestock_heads[,,4], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_6, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_meat_goats"), format="GTiff", overwrite=T)
+writeRaster(raster_6, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_meat_goats"), format="GTiff", overwrite=T)
 raster_7 <- raster(matrix(number_of_livestock_heads[,,5], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_7, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_dairy_sheep"), format="GTiff", overwrite=T)
+writeRaster(raster_7, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_dairy_sheep"), format="GTiff", overwrite=T)
 raster_8 <- raster(matrix(number_of_livestock_heads[,,6], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_8, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_meat_sheep"), format="GTiff", overwrite=T)
+writeRaster(raster_8, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_meat_sheep"), format="GTiff", overwrite=T)
 raster_9 <- raster(matrix(number_of_livestock_heads[,,7], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_9, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_pigs"), format="GTiff", overwrite=T)
+writeRaster(raster_9, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_pigs"), format="GTiff", overwrite=T)
 raster_10 <- raster(matrix(number_of_livestock_heads[,,8], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_10, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_broilers"), format="GTiff", overwrite=T)
+writeRaster(raster_10, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_broilers"), format="GTiff", overwrite=T)
 raster_11 <- raster(matrix(number_of_livestock_heads[,,9], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_11, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_hens"), format="GTiff", overwrite=T)
+writeRaster(raster_11, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_hens"), format="GTiff", overwrite=T)
 
 
 rm(raster_3, raster_4, raster_5, raster_6, raster_7, raster_8, raster_9, raster_10, raster_11, number_of_livestock_heads)
@@ -1019,40 +1019,40 @@ gc()
 
 # Total available Nitrogen in organic manure
 raster_12 <- raster(matrix(N_total_available[,,1], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_12, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_tot_available"), format="GTiff", overwrite=T)
+writeRaster(raster_12, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_tot_available"), format="GTiff", overwrite=T)
 
 rm(raster_12, N_total_available)
 
 # Error counter
 raster_13 <- raster(matrix(counter[,], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_13, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_optimisation_counter"), format="GTiff", overwrite=T)
+writeRaster(raster_13, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_optimisation_counter"), format="GTiff", overwrite=T)
 
 rm(raster_13, counter)
 gc()
 
 # Model statistics
 raster_14 <- raster(matrix(statistics[,,1], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_14, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_food_feed_crops_energy_production"), format="GTiff", overwrite=T)
+writeRaster(raster_14, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_food_feed_crops_energy_production"), format="GTiff", overwrite=T)
 raster_15 <- raster(matrix(statistics[,,2], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_15, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_food_feed_crops_protein_production"), format="GTiff", overwrite=T)
+writeRaster(raster_15, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_food_feed_crops_protein_production"), format="GTiff", overwrite=T)
 raster_16 <- raster(matrix(statistics[,,3], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_16, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_grain_energy_used_livestock"), format="GTiff", overwrite=T)
+writeRaster(raster_16, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_grain_energy_used_livestock"), format="GTiff", overwrite=T)
 raster_17 <- raster(matrix(statistics[,,4], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_17, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_grain_protein_used_livestock"), format="GTiff", overwrite=T)
+writeRaster(raster_17, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_grain_protein_used_livestock"), format="GTiff", overwrite=T)
 raster_18 <- raster(matrix(statistics[,,5], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_18, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_temporary_fodder_[tDM]"), format="GTiff", overwrite=T)
+writeRaster(raster_18, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_temporary_fodder_[tDM]"), format="GTiff", overwrite=T)
 raster_19 <- raster(matrix(statistics[,,6], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_19, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_energy_temporary_fodder_[MJ]"), format="GTiff", overwrite=T)
+writeRaster(raster_19, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_energy_temporary_fodder_[MJ]"), format="GTiff", overwrite=T)
 raster_20 <- raster(matrix(statistics[,,7], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_20, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_protein_temporary_fodder_[tons]"), format="GTiff", overwrite=T)
+writeRaster(raster_20, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_protein_temporary_fodder_[tons]"), format="GTiff", overwrite=T)
 raster_21 <- raster(matrix(statistics[,,8], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_21, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_fodder_energy_used_livestock"), format="GTiff", overwrite=T)
+writeRaster(raster_21, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_fodder_energy_used_livestock"), format="GTiff", overwrite=T)
 raster_22 <- raster(matrix(statistics[,,9], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_22, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_total_fodder_protein_used_livestock"), format="GTiff", overwrite=T)
+writeRaster(raster_22, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_total_fodder_protein_used_livestock"), format="GTiff", overwrite=T)
 raster_23 <- raster(matrix(statistics[,,10], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_23, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_difference_produced_consumed_temp_fodder_MJ"), format="GTiff", overwrite=T)
+writeRaster(raster_23, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_difference_produced_consumed_temp_fodder_MJ"), format="GTiff", overwrite=T)
 raster_24 <- raster(matrix(statistics[,,11], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_24, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_ratio_%_loss_manure_pasture_when_negative"), format="GTiff", overwrite=T)
+writeRaster(raster_24, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_ratio_%_loss_manure_pasture_when_negative"), format="GTiff", overwrite=T)
 
 rm(raster_14, raster_15, raster_16, raster_17, raster_18, raster_19, raster_20, raster_21, raster_22, raster_23, raster_24, statistics)
 gc()
@@ -1060,7 +1060,7 @@ gc()
 # Crops SUB_Food yield
 for (i in 1:61) {
 	raster_25 <- raster(matrix(matrix_sub_food_yield[,,i], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-	writeRaster(raster_25, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_SUByield_food", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
+	writeRaster(raster_25, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_SUByield_food", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
 }
 
 rm(raster_25, matrix_sub_food_yield)
@@ -1069,7 +1069,7 @@ gc()
 # Crops SUB_Feed yield
 for (i in 1:61) {
 	raster_26 <- raster(matrix(matrix_sub_feed_yield[,,i], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-	writeRaster(raster_26, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_SUByield_feed", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
+	writeRaster(raster_26, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_SUByield_feed", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
 }
 
 rm(raster_26, matrix_sub_feed_yield)
@@ -1077,13 +1077,13 @@ gc()
 
 # Standing animals
 raster_27 <- raster(matrix(number_of_livestock_standing_animals[,,1], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_27, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_standing_meat_goats"), format="GTiff", overwrite=T)
+writeRaster(raster_27, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_standing_meat_goats"), format="GTiff", overwrite=T)
 raster_28 <- raster(matrix(number_of_livestock_standing_animals[,,2], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_28, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_standing_meat_sheep"), format="GTiff", overwrite=T)
+writeRaster(raster_28, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_standing_meat_sheep"), format="GTiff", overwrite=T)
 raster_29 <- raster(matrix(number_of_livestock_standing_animals[,,3], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_29, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_standing_pigs"), format="GTiff", overwrite=T)
+writeRaster(raster_29, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_standing_pigs"), format="GTiff", overwrite=T)
 raster_30 <- raster(matrix(number_of_livestock_standing_animals[,,4], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_30, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_N_standing_broilers"), format="GTiff", overwrite=T)
+writeRaster(raster_30, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_N_standing_broilers"), format="GTiff", overwrite=T)
 
 rm(raster_27, raster_28, raster_29, raster_30, number_of_livestock_standing_animals)
 gc()
@@ -1092,7 +1092,7 @@ gc()
 # BNF
 for (i in 1:length(which(Fixed_N!=0))) {
     raster_28 <- raster(matrix(BNF[,,i], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-    writeRaster(raster_28, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_BNF_", crop_info$CropName[which(crop_info$CropClass=="N-fixing")[i]], ".tif"), format="GTiff", overwrite=T)
+    writeRaster(raster_28, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_BNF_", crop_info$CropName[which(crop_info$CropClass=="N-fixing")[i]], ".tif"), format="GTiff", overwrite=T)
 }
 
 rm(raster_28, BNF)
