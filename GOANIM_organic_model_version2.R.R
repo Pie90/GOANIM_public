@@ -179,12 +179,12 @@ Energy_crops <- crop_info$metabolisable_Energy_MJ.kgDM*1000    # transformed int
     
 i <- 1
 
-## sensitivity initalisation, script initialisation.
-sensitivity_no <- 51
-script_no <- 1
+## scenario initalisation, script initialisation.
+scenario_S_no <- NA
+script_no <- Na
 
 
-for (j in 1:1060363) {
+for (j in 1:9331200) {
   
 
 if (is.na(matrix_area_vec[i,j,1])==FALSE) {   # Run optimisation only if there is some  land in the gridcell (excuding oceans)
@@ -339,19 +339,19 @@ crs <- c("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0")
 # Total crops yield
 for (i in 1:61) {
     raster_1 <- raster(matrix(matrix_final_yield[,,i], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-	writeRaster(raster_1, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no, "/scenario_S_", sensitivity_no , "/script_", script_no, "_yield_1_", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
+	writeRaster(raster_1, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no, "/scenario_S_", scenario_S_no , "/script_", script_no, "_yield_1_", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
 }
 
 # Error counter
 raster_2 <- raster(matrix(counter[,], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-writeRaster(raster_2, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_optimisation_counter"), format="GTiff", overwrite=T)
+writeRaster(raster_2, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_optimisation_counter"), format="GTiff", overwrite=T)
 
 
 
 # Total N from organic manure allocate to each crop
 for (i in 1:61) {
     raster_3 <- raster(matrix(matrix_final_N_assigned_to_crop[,,i], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-    writeRaster(raster_3, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no, "/scenario_S_", sensitivity_no,  "/script_", script_no, "_N_MANURE_assigned_to_crop_1_", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
+    writeRaster(raster_3, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no, "/scenario_S_", scenario_S_no,  "/script_", script_no, "_N_MANURE_assigned_to_crop_1_", crop_info$CropName[i], ".tif"), format="GTiff", overwrite=T)
 }
 
 rm(raster_3, matrix_final_N_assigned_to_crop)
@@ -361,7 +361,7 @@ gc()
 # BNF
 for (i in 1:length(which(Fixed_N!=0))) {
     raster_4 <- raster(matrix(BNF[,,i], nrow=2160, byrow=TRUE), xmn=-180, xmx=180, ymn=-90, ymx=90, crs = crs)
-    writeRaster(raster_4, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", sensitivity_no , "/script_", script_no, "_BNF_", crop_info$CropName[which(crop_info$CropClass=="N-fixing")[i]], ".tif"), format="GTiff", overwrite=T)
+    writeRaster(raster_4, filename = paste0("Organic_optimisation_sub_model/results/script_", script_no,  "/scenario_S_", scenario_S_no , "/script_", script_no, "_BNF_", crop_info$CropName[which(crop_info$CropClass=="N-fixing")[i]], ".tif"), format="GTiff", overwrite=T)
 }
 
 rm(raster_4, BNF)
