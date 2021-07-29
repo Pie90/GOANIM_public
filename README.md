@@ -18,11 +18,13 @@ GOANIM is provided in two main version: version #1 is based on the optimisation 
 
 # Model Updates
 
-GOANIM has been updated since its version used to generate the scenarios described in "Barbieri et al (2021). The global oprtion space fpr organic agriculture is delimited by nitrogen availability. _Nature Food, 2, 363-372_"
+GOANIM version #1 as been updated since its version used to generate the scenarios described in "Barbieri et al (2021). The global option space fpr organic agriculture is delimited by nitrogen availability. _Nature Food, 2, 363-372_"
 
 These updates includes:
 
-* Update of IPCC coefficients from IPCC 2016 to IPCC 2019
-* Changes in the dietary requireme,nt and productivity of animals in organic farming, as based on results from "Gaudare et al (2020). Comparing productivity and feed-use efficiency between organic and conventional livestock animals. _Environmental Research letters 16(2)_"
+* Update of IPCC coefficients from IPCC 2016 to IPCC 2019, including a better refining of the N flows distribution amoung temporary and permanent pastures.
+* Changes in the dietary requirements and productivity of animals in organic farming, as based on results from "Gaudare et al (2020). Comparing productivity and feed-use efficiency between organic and conventional livestock animals. _Environmental Research letters 16(2)_"
 * Add limitation for the share of permanent pasture biomass that is grazable by livestock, following "Erb et al. (2016). Exploring the biophysical option space for feeding the world without deforestation. _Nature Communications, 7_"
+* The simulation of livestock populations accounts now for youg animals (which were previosly not simulated)
 
+This most recent version can be found in this repository under the name of GOANIM_organic_model_version2021.R
